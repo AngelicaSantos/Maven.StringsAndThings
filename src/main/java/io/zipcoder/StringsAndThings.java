@@ -15,7 +15,24 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int count = 0;
+        int input2 = input.length()-1;
+        char ch;
+        input = input.toLowerCase();
+        ch=input.charAt(0);
+
+        for (int i=0; i<=input.length()-1; i++) {
+            if (ch == 'y' || ch == 'z') {
+                ch = input.charAt(i);
+                if (!Character.isLetter(ch))
+                    count++;
+            }
+            else
+                ch = input.charAt(i);
+        }
+        if (ch == 'y' || ch == 'z')
+            count ++;
+        return count;
     }
 
     /**
@@ -28,7 +45,14 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        String newString="";
+
+        newString=base.replace(remove,"");
+
+
+
+       return newString;
     }
 
     /**
@@ -40,7 +64,22 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        String a= "is";
+        String b= "not";
+
+        return calculate(input,a) == calculate(input,b);
+
+    }
+    public static int calculate(String str, String strFind){
+        int count =0;
+        int fromIndex =0 ;
+        while((fromIndex = str.indexOf(strFind,fromIndex)) != -1){
+
+            count++;
+            fromIndex++;
+
+        }
+        return count;
     }
 
     /**
@@ -50,11 +89,28 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-        return null;
+    public Boolean gIsHappy(String input) {
+
+        Boolean gIsHappy = false;
+        for (int i = 0; i < input.length() - 1; i++) {
+
+
+            if (input.charAt(i) == 'g' && input.charAt(i + 1) == 'g') {
+
+                gIsHappy = true;
+                break;
+            }
+
+        }
+        return gIsHappy;
     }
-
-
+//
+//        if (input.indexOf("gg") == -1){
+//
+//            return false;
+//        }
+//        return true;
+//    }
     /**
      * We'll say that a "triple" in a string is a char appearing three times in a row.
      * Return the number of triples in the given string. The triples may overlap.
@@ -63,6 +119,17 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+
+        int len = input.length();
+
+        int count = 0;
+        for (int i = 0; i < len-2; i++) {
+            char tmp = input.charAt(i);
+            if (tmp == input.charAt(i+1) && tmp == input.charAt(i+2))
+
+            count++;
+        }
+        return count;
+
     }
 }
